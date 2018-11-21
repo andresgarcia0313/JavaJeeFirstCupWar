@@ -20,6 +20,7 @@ import javax.persistence.Temporal;
 
 @Entity
 // Insert code here
+@NamedQuery(name = "findAverageAgeDifferenceOfAllFirstcupUsers", query = "SELECT AVG(u.ageDifference) FROM FirstcupUser u")
 public class FirstcupUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,7 +35,11 @@ public class FirstcupUser implements Serializable {
     }
 
     public FirstcupUser(Date date, int difference) {
-		// Insert code here
+        Calendar cal = new GregorianCalendar();
+        cal.setTime(date);
+        birthday = cal;
+        ageDifference = difference;
+        // Insert code here
     }
 
     /**
